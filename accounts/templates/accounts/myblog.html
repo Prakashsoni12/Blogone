@@ -1,0 +1,33 @@
+{% extends 'accounts/layout/main.html' %}
+{% load static %}
+{% block title %}
+Coders
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card shadow">
+                {% if blog %}
+                {% for item in blog %}
+                <div class="card-header">
+                    <label class="fw-bold">Title</label>
+                    {{ item.title }}
+                </div>
+                <div class="card-body">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" class="w-50" alt="" srcset="">
+                    {% else %}
+                    <img src="{% static 'images/nologo.png' %}" alt="" srcset="">
+                    {% endif %}
+                    <label class="fw-bold">Descriptions</label>
+                    {{ item.description }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
